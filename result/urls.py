@@ -6,7 +6,6 @@ from django.contrib import admin
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('student/<slug:class_id>/search/', views.student_search, name='student_search'),
     path('student/<slug:stud_id>/marks_list/', views.marks_list, name='marks_list'),
 
     path('student/<int:stud_id>/tabulation/', views.s_gen_tabulation, name='s_tabulation'),
