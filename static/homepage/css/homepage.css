@@ -1,0 +1,42 @@
+/* body {
+  background: 
+  background-repeat:no-repeat;
+  background-size: 100%;
+} */
+
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+/* .enter-marks {
+  margin-left: 40%;
+  height: 10%;
+} */
+
+.content {
+  overflow: auto;
+  position: relative;
+}
+
+.content::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url(/static/images/homepage_img.jpg);
+  background-size:cover;
+  width: 100%;
+  height: 100%;
+
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}

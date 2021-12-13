@@ -1,0 +1,42 @@
+{% extends 'result/base.html' %}
+    {% load static %}
+
+    {% block content %}
+                  <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+            <b>Marks</b></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-active" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr class="table-primary">
+                        <th>Course ID</th>
+                        <th>Course name</th>
+                        <th>Attendance</th>
+                        <th>Term Test</th>
+                        <th>Semester Final Exam</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for sc in sc_list %}
+                    <tr>
+                        <td>{{ sc.course_id }}</td>
+                        <td>{{sc.course.name}}</td>
+                        {% for m in sc.marks_set.all %}
+                            <td>{{ m.marks1 }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% empty %}
+                            <p>student has no courses</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+                <a class= "btn btn-primary" href="{% url 's_tabulation' stud.registration_number%}" role="button">Generate Tabulation Sheet</a>
+              </div>
+            </div>
+          </div>
+
+
+    {% endblock %}

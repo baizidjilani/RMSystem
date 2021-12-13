@@ -1,0 +1,38 @@
+{% extends 'result/base.html' %}
+{% block content %}
+  
+    <div class="card mb-3">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table text-center" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr class="table-info">
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>Choose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for ass in teacher1.assignteacher_set.all %}
+                    <tr class="table-active">
+                        <td >{{ ass.course_id }}</td>
+                        <td >{{ ass.course }}</td>
+                        <td>
+                            {% if choice == 1 %}              
+                            {% elif choice == 2 %}
+                                <a class="btn btn-info" href="{% url 't_marks_list' ass.id %}" role="button">Enter Marks</a>
+                                <a class="btn btn-secondary" href="{% url 't_student_marks' ass.id %}">View Students</a>
+                            {% elif choice == 3 %}
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                    {% empty %}
+                            <p>teacher has no courses</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+    </div>
+{% endblock %}

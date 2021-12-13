@@ -1,0 +1,53 @@
+{% extends 'result/base.html' %}
+{% block content %}
+{% if c.student_set.all %}
+
+<form action="{% url 'marks_confirm' mc.id %}" method="post">
+  {% csrf_token %}
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th style="font-size: larger;">Exam Name: {{mc.name}}</th>
+        <th style="text-align:right; font-size: larger;">Total Mark: {{mc.total_marks}}</th>
+      </tr>
+    </thead>
+  </table>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-active text-center" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr class="table-primary">
+              <th>Registration Number</th>
+              <th>Student Name</th>
+              <th>Enter Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for s in c.student_set.all %}
+            <tr>
+              <td>{{s.registration_number}}</td>
+              <td>{{s.name}}</td>
+              <td>
+                <input type="number" name="{{ s.registration_number}}" min="0" max="{{ mc.total_marks }}" value="0">
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <input class="btn btn-primary btn-lg" type="submit" value="Submit" style="margin-left: 45%;">
+
+
+</form>
+
+
+{% else %}
+<p>No students in Class</p>
+{% endif %}
+
+{% endblock %}

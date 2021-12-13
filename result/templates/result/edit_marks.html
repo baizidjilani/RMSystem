@@ -1,0 +1,47 @@
+{% extends 'result/base.html' %}
+{% block content %}
+
+<form action="{% url 'marks_confirm' mc.id %}" method="post">
+  {% csrf_token %}
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th style="font-size: larger;">Exam Name: {{mc.name}}</th>
+        <th style="text-align:right; font-size: larger;">Total Mark: {{mc.total_marks}}</th>
+      </tr>
+    </thead>
+  </table>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-active text-center" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr class="table-primary">
+              <th>Registration Number</th>
+              <th>Student Name</th>
+              <th>Enter Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for m in m_list %}
+            <tr>
+              <td>{{m.studentcourse.student.registration_number}}</td>
+              <td>{{m.studentcourse.student.name}}</td>
+              <td>
+                <input type="number" name="{{ m.studentcourse.student.registration_number }}" min="0" max="{{ m.total_marks }}"
+                  value="{{ m.marks1 }}">
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <input class="btn btn-primary btn-lg" type="submit" value="Submit" style="margin-left: 45%;">
+
+</form>
+
+{% endblock %}

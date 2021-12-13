@@ -1,0 +1,97 @@
+{% extends 'result/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table "></i>
+        5th Semester Examination
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-active text-center" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr class="table-primary">
+                        <th >Reg No.</th>
+                        <th>Name</th>
+                        {% for code in c_code %}
+                        <th>{{code.course_id}}</th>
+                        {% endfor %}
+                        <th>Total Credit</th>
+                        <th>Total GPA</th>
+                        <th>Letter Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for unique in unique_stu %}
+                        {% if forloop.counter0 < total_student %} 
+                        <tr>
+                            <td>{{ unique.registration_number }}</td>
+                            <td style="text-transform: uppercase;">{{ unique.name }}</td>
+                        {% for m in sc_list %}
+                            {% if unique.registration_number == m.regi %}
+                                {% if m.total_marks >= 80 %}
+                                    <td>{{ '4.00 A+ ' }}</td>
+                                {% elif m.total_marks >= 75 %}
+                                    <td>{{ '3.75 A' }}</td>
+                                {% elif m.total_marks >= 70 %}
+                                    <td>{{ '3.50 A- ' }}</td>
+                                {% elif m.total_marks >= 65 %}
+                                    <td>{{ '3.25 B+ ' }}</td>
+                                {% elif m.total_marks >= 60 %}
+                                    <td>{{ '3.00 B ' }}</td>
+                                {% elif m.total_marks >= 55 %}
+                                    <td>{{ '2.75 B- ' }}</td>
+                                {% elif m.total_marks >= 50 %}
+                                    <td>{{ '2.50 C+ ' }}</td>
+                                {% elif m.total_marks >= 45 %}
+                                    <td>{{ '2.25 C ' }}</td>
+                                {% elif m.total_marks >= 40 %}
+                                    <td>{{ '2.00 C-' }}</td>
+                                {% else %}
+                                    <td>{{ '0.00 F '}}</td>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{t_credits.credits__sum}}</td>
+                        {% for key, value in tab.items%}
+                         {% if key == unique.registration_number%}
+                            <td>{{value}}</td>
+                            {% if value == 4.00 %}
+                                <td>{{ '<b>A+</b> ' }}</td>
+                            {% elif value >= 3.75 %}
+                                <td>{{ '<b>A</b>' }}</td>
+                            {% elif value >= 3.50 %}
+                                <td>{{ '<b>A-</b> ' }}</td>
+                            {% elif value >= 3.25 %}
+                                <td>{{ '<b>B+</b> ' }}</td>
+                            {% elif value >= 3.00 %}
+                                <td>{{ '<b>B</b> ' }}</td>
+                            {% elif value >= 2.75 %}
+                                <td>{{ '<b>B-</b> ' }}</td>
+                            {% elif value >= 2.50 %}
+                                <td>{{ '<b>C+</b> ' }}</td>
+                            {% elif value >= 2.25 %}
+                                <td>{{ '<b>C</b> ' }}</td>
+                            {% elif value >= 2.00 %}
+                                <td>{{ '<b>C-</b>' }}</td>
+                            {% else %}
+                                <td>{{ '<b>F</b> '}}</td>
+                            {% endif %}
+                         {% endif %}
+                        {% endfor %}
+                        </tr>
+
+                        {% endif %}
+                    {% endfor %}
+                
+
+                </tbody>
+            </table>
+            <a class= "btn btn-primary" href="{% url 'generate_pdf' idAssign.id%}" role="button">Generate Tabulation Sheet</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

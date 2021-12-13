@@ -1,0 +1,36 @@
+th{
+    border-top:1px solid #333; 
+    border-bottom:1px solid #333; 
+    border-left:1px solid #333; 
+    border-right:1px solid #333;
+    height: 32%; 
+    align-items: center;
+    text-align: center;
+}
+
+td{
+    border-bottom:1px solid #333; 
+    border-left:1px solid #333; 
+    border-right:1px solid #333;
+    height: 32%; 
+    align-items: center;
+    text-align: center;
+}
+
+/* .iconDetails {
+   margin-left:2%;
+   float:left; 
+   height:40px;
+   width:50px; 
+   } 
+
+   .container2 {
+    width:270px;
+    height:auto;
+    padding:1%;
+    float:left;
+}
+
+h4{margin:0}
+.left {float:left;width:45px;}
+.right {float:left;margin:0 0 0 5px;width:405px;} */

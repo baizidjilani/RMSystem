@@ -1,0 +1,45 @@
+{% extends 'result/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fas fa-table"></i>
+    <b>Student Marks </b>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-active" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr class="table-primary">
+            <th>Registration Number</th>
+            <th>Student Name</th>
+            <th>Attendance</th>
+            <th>Term Test</th>
+            <th>Semester Final Exam</th>
+            <!-- <th>Total Marks</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for sc in sc_list %}
+          <tr>
+            <td>{{ sc.student_id }}</td>
+            <td style = "text-transform: uppercase;">{{ sc.student.name }}</td>
+            {% for m in sc.marks_set.all %}
+            <td>{{ m.marks1 }}</td>
+            {% endfor %}
+            
+            <!-- <td>{{mark.total_marks}}</td> -->
+          </tr>
+          {% empty %}
+          <p>student has no courses</p>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

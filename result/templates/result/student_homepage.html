@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>homepage</title>
+  {% load static %}
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static '/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+  <!-- Custom styles for this template -->
+  <link href="{% static '/homepage/css/homepage.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static '/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand mr-3" href="#">
+        <img src="{% static 'images/logo.png' %}" alt="" width="60" height="54">
+      </a>
+      <button class="btn btn-primary mr-5" type="button">
+        <a class="navbar-brand" href="{% url 'index' %}">Result Management System</a>
+      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-4 mb-lg-0">
+          <li class="nav-item">
+            <button class="btn btn-outline-primary mr-5" type="button">
+              <a class="nav-link active text-dark" aria-current="page" href="{% url 'index' %}">Home</a>
+            </button>
+          </li>
+          {% if request.user.is_student %}
+          <li class="nav-item">
+            <button class="btn btn-outline-primary mr-5" type="button">
+              <a class="nav-link text-dark" href="{% url 'marks_list' request.user.student.registration_number %}">View Marks</a>
+            </button>
+
+          </li>
+          {% elif request.user.is_teacher %}
+          <li class="nav-item">
+            <button class="btn btn-outline-primary mr-5" type="button">
+              <a class="nav-link text-dark" href="{% url 't_clas' request.user.teacher.id 2  %}">View Marks</a>
+            </button>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            {% if request.user.is_student %}
+            <button class="btn btn-outline-primary mr-5" type="button">
+              <a class="nav-link text-capitalize text-dark">{{ request.user.student.name }}</a>
+            </button>
+
+            {% elif request.user.is_teacher %}
+            <button class="btn btn-outline-primary mr-5" type="button">
+              <a class="nav-link text-capitalize text-dark">{{ request.user.teacher.name }}</a>
+            </button>
+
+            {% endif %}
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-primary mr-5" type="button">
+              <a class="nav-link text-dark" href="/accounts/logout" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </button>
+
+          </li>
+        </ul>
+        <button class="btn btn-outline-primary me-2" type="button">
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          </form>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <h1 style="margin-top: 20px; text-align: center;">Student's Site</h1>
+  
+  <div class="container content">
+
+    <div class="row text-center" style="font-size:250% !important;">
+          <div class="enter-marks" style="margin-top: 200px; margin-left: 43%;">
+            <a class="btn btn-primary btn-lg" role="button" href="{% url 'marks_list' request.user.student.registration_number %}">View
+              Marks</a>
+          </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static '/homepage/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static '/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
