@@ -37,7 +37,7 @@ cd RMSystem
 pip install pipenv
 pipenv install django==3.1.3
 pipenv shell
-pip install crispy-forms==1.9.2
+pip install django-crispy-forms==1.9.2
 pip install xhtml2pdf
 ```
 After that:
