@@ -4,6 +4,9 @@ In this age of online learning, we focused on building an Online Result Manageme
 It is designed for interactions between teachers and students where students can view their academic result and download 
 the tabulation sheet and teachers can view, enter and edit the marks and generate the tabulation sheet.
 
+Here is a short preview of the project:\
+[See the preview](https://drive.google.com/file/d/1No3oQXur2roLGkO5HvX0dSyB_faEMZHJ/view?fbclid=IwAR02U3ZBNB5FeFzWunBKUg9gA5dzI5hGKl-_uSyG8cxgfeAnqGQV8c5jr_0)
+
 ## Features:
 1.	This is a Multi User System web application where user are the admin, teachers and students.   
 2.	Admin can create users and s/he can also edit user data.
@@ -31,9 +34,10 @@ git clone https://github.com/baizidjilani/RMSystem.git
 Then run the following commands:
 ```
 cd RMSystem
-pipenv install django=3.1.3
-pipen shell
-pip install crispy-forms=1.9.2
+pip install pipenv
+pipenv install django==3.1.3
+pipenv shell
+pip install django-crispy-forms==1.9.2
 pip install xhtml2pdf
 ```
 After that:
@@ -49,7 +53,7 @@ python manage.py runserver
 Username: alex
 Password: alex
 ```
-![](screenshots/ss_1.png)
+![](screenshots/ss_01.png)
 ![](screenshots/ss_2.png)
 ![](screenshots/ss_3.png)
 ![](screenshots/ss_4.png)
