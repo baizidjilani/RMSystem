@@ -7,7 +7,6 @@ from .models import Department, Class, Student, Course, Teacher, AssignTeacher, 
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-import pandas as pd
 from django.views.generic import View
 from django.template.loader import get_template, render_to_string
 from xhtml2pdf import pisa  
