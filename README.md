@@ -4,6 +4,9 @@ In this age of online learning, we focused on building an Online Result Manageme
 It is designed for interactions between teachers and students where students can view their academic result and download 
 the tabulation sheet and teachers can view, enter and edit the marks and generate the tabulation sheet.
 
+Here is a short preview of the project:\
+[See the preview](https://drive.google.com/file/d/1No3oQXur2roLGkO5HvX0dSyB_faEMZHJ/view?fbclid=IwAR02U3ZBNB5FeFzWunBKUg9gA5dzI5hGKl-_uSyG8cxgfeAnqGQV8c5jr_0)
+
 ## Features:
 1.	This is a Multi User System web application where user are the admin, teachers and students.   
 2.	Admin can create users and s/he can also edit user data.
