@@ -34,7 +34,9 @@ git clone https://github.com/baizidjilani/RMSystem.git
 Then run the following commands:
 ```
 cd RMSystem
-pip install django==3.1.3
+pip install pipenv
+pipenv install django
+pipenv shell
 pip install django-crispy-forms==1.9.2
 pip install xhtml2pdf
 ```
